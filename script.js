@@ -97,9 +97,14 @@ class MixOrMatch {
 
     cardMismatch(card1, card2) {
         this.busy = true;
+    
+        // Add shake class
+        card1.classList.add('shake');
+        card2.classList.add('shake');
+    
         setTimeout(() => {
-            card1.classList.remove('visible');
-            card2.classList.remove('visible');
+            card1.classList.remove('shake', 'visible');
+            card2.classList.remove('shake', 'visible');
             this.busy = false;
         }, 1000);
     }
