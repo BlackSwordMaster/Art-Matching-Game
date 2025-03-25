@@ -1,186 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="styles.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-  <script src="script.js" async></script>
+  <!-- ============================
+  META & HEAD CONTENT
+  ============================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Art Matching Game</title>
+
+  <!-- Styles -->
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet" />
+
+  <!-- Game Logic -->
+  <script src="script.js" async></script>
 </head>
+
 <body>
+
+  <!-- ============================
+  PAGE TITLE
+  ============================= -->
   <h1 class="page-title">Art Matching Game</h1>
-  <div class="overlay-text visible">
-    Click to Start
-  </div>
+
+  <!-- ============================
+  OVERLAY TEXTS (Start, Game Over, Victory)
+  ============================= -->
+  <div class="overlay-text visible">Click to Start</div>
+
   <div id="game-over-text" class="overlay-text">
     GAME OVER
     <span class="overlay-text-small">Click to Restart</span>
   </div>
+
   <div id="victory-text" class="overlay-text">
     VICTORY
     <span class="overlay-text-small">Click to Restart</span>
   </div>
 
+  <!-- ============================
+  GAME BOARD
+  ============================= -->
   <div class="game-container">
+
+    <!-- Game Info (Time, Score, Flips) -->
     <div class="game-info-container">
-      <div class="game-info">
-        Time: <span id="time-remaining">100</span>
-      </div>
-      <div class="game-info">
-        Score: <span id="score">0</span>
-      </div>
-      <div class="game-info">
-        Flips: <span id="flips">0</span>
-      </div>
-      
+      <div class="game-info">Time: <span id="time-remaining">100</span></div>
+      <div class="game-info">Score: <span id="score">0</span></div>
+      <div class="game-info">Flips: <span id="flips">0</span></div>
+    </div>
+
+    <!-- ============================
+    MEMORY CARDS (Match Artist to Artwork)
+    ============================= -->
+
+    <!-- Repeat this pattern for each pair of artist name and image -->
+    <!-- Vincent van Gogh -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="van-gogh">Vincent van Gogh</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="van-gogh">Vincent van Gogh</span>
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/starry_night.jpg" data-type="van-gogh"></div>
+    </div>
+
+    <!-- Edward Munch -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Edward-munch">Edward Munch</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/starry_night.jpg" data-type="van-gogh">
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/Scream.jpg" data-type="Edward-munch"></div>
+    </div>
+
+    <!-- Gustav Klimt -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Gustav-Klimt">Gustav Klimt</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Edward-munch">Edward Munch</span>
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/Gustav_Klimt_046.jpg" data-type="Gustav-Klimt"></div>
+    </div>
+
+    <!-- Johannes Vermeer -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Johannes-Vermeer">Johannes Vermeer</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/Scream.jpg" data-type="Edward-munch">
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/girl with a paerl earing.jpg" data-type="Johannes-Vermeer"></div>
+    </div>
+
+    <!-- Leonardo da Vinci -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Leonardo-da-Vinci">Leonardo da Vinci</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Gustav-Klimt">Gustav Klimt</span>
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/mona lisa.jpg.webp" data-type="Leonardo-da-Vinci"></div>
+    </div>
+
+    <!-- Grant Wood -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Grant-Wood">Grant Wood</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/Gustav_Klimt_046.jpg" data-type="Gustav-Klimt">
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg" data-type="Grant-Wood"></div>
+    </div>
+
+    <!-- Salvador Dali -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Salvador-Dali">Salvador Dali</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Johannes-Vermeer">Johannes Vermeer</span>
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/the persistence of memory.jpg" data-type="Salvador-Dali"></div>
+    </div>
+
+    <!-- Gustav Klimt (duplicate for matching pair) -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Gustav-Klimtt">Gustav Klimt</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/girl with a paerl earing.jpg" data-type="Johannes-Vermeer">
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/The-Kiss.jpg" data-type="Gustav-Klimtt"></div>
+    </div>
+
+    <!-- Caravaggio -->
+    <div class="card">
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><span class="card-value" data-type="Caravaggio">Caravaggio</span></div>
     </div>
     <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Leonardo-da-Vinci">Leonardo da Vinci</span>
-      </div>
+      <div class="card-back card-face"><img class="logo" src="Images/Logo.png"></div>
+      <div class="card-front card-face"><img class="card-value" src="Images/David_with_the_Head_of_Goliath-Caravaggio_(1610).jpg" data-type="Caravaggio"></div>
     </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/mona lisa.jpg.webp" data-type="Leonardo-da-Vinci">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Grant-Wood">Grant Wood</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg" data-type="Grant-Wood">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Salvador-Dali">Salvador Dali</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/the persistence of memory.jpg" data-type="Salvador-Dali">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Gustav-Klimtt">Gustav Klimt</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/The-Kiss.jpg" data-type="Gustav-Klimtt">
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <span class="card-value" data-type="Caravaggio">Caravaggio</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-back card-face">
-        <img class="logo" src="Images/Logo.png">
-      </div>
-      <div class="card-front card-face">
-        <img class="card-value" src="Images/David_with_the_Head_of_Goliath-Caravaggio_(1610).jpg" data-type="Caravaggio">
-      </div>
-    </div>
-    
+
+  </div> 
 
 </body>
 </html>

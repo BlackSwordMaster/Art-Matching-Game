@@ -1,3 +1,6 @@
+/* ===========================================================
+GLOBAL RESET & BASE STYLES
+=========================================================== */
 * {
   box-sizing: border-box;
 }
@@ -11,11 +14,15 @@ body {
   background: linear-gradient(145deg, #978b6f, #b0a589);
 }
 
-/*adds a subtle font shadow*/
+/* Font shadow for page elements */
 .page-title, .game-info, .overlay-text {
   text-shadow: 1px 1px 2px #444;
 }
 
+
+/* ===========================================================
+PAGE TITLE
+=========================================================== */
 .page-title {
   color: whitesmoke;
   font-family: 'Gloria Hallelujah', cursive;
@@ -27,12 +34,17 @@ body {
   border: 1px solid #a6b48d;
 }
 
+
+/* ===========================================================
+GAME INFO BAR (Time, Score, Flips)
+=========================================================== */
 .game-info-container {
   grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   gap: 30px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .game-info {
@@ -41,11 +53,14 @@ body {
   font-size: 3em;
   padding: 10px 20px;
   background: #22b81f;
-  border-radius: 10px;
   border-radius: 12px;
   border: 1px solid #a6b48d;
 }
 
+
+/* ===========================================================
+GAME CONTAINER & GRID
+=========================================================== */
 .game-container {
   margin: 50px auto;
   display: grid;
@@ -60,6 +75,10 @@ body {
   width: fit-content;
 }
 
+
+/* ===========================================================
+CARD STRUCTURE
+=========================================================== */
 .card {
   position: relative;
   height: 175px;
@@ -67,6 +86,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* Shared styles for both front/back of cards */
 .card-face {
   position: absolute;
   display: flex;
@@ -75,13 +95,13 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid;
   overflow: hidden;
   transition: transform 500ms ease-in-out;
   backface-visibility: hidden;
 }
 
+/* Card flipping states */
 .card.visible .card-back {
   transform: rotateY(-180deg); 
 }
@@ -90,19 +110,21 @@ body {
   transform: rotateY(0); 
 }
 
+/* Matched animation trigger */
 .card.matched .card-front .card-value {
   animation: dance 1s linear infinite 500ms;
 }
 
+
+/* ===========================================================
+CARD FRONT & BACK
+=========================================================== */
 .card-back {
-  position: center;
-  height: 175px;
-  width: 125px;
+  transform: rotateY(0);
   border: 1px solid black;
-  transform: rotateY(0); 
 }
 
-.card-back img{
+.card-back img {
   width: 100%;
   height: 100%;
 }
@@ -113,38 +135,38 @@ body {
   transform: rotateY(180deg);
 }
 
-.card-front img{
+.card-front img {
   width: 100%;
   height: 100%;
 }
 
+/* Name or image of card (artist or artwork) */
 .card-value {
   position: relative;
   transition: transform 100ms ease-in-out;
 }
 
+
+/* ===========================================================
+OVERLAY TEXT (Start, Victory, Game Over)
+=========================================================== */
 .overlay-text {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  display: none;
   position: fixed;
+  z-index: 100;
+  top: 0; left: 0; right: 0; bottom: 0;
+
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   background-color: rgba(34, 184, 31, 0.85); /* semi-transparent green */
   border-radius: 15px;
   padding: 20px;
-  text-shadow: 2px 2px #444;
   color: white;
   font-family: 'Gloria Hallelujah', cursive;
   transition: background-color 500ms, font-size 500ms;
-}
-
-.overlay-text-small {
-  font-size: .3em;
+  text-shadow: 2px 2px #444;
 }
 
 .overlay-text.visible {
@@ -152,32 +174,44 @@ body {
   animation: overlay-grow 500ms forwards;
 }
 
+.overlay-text-small {
+  font-size: .3em;
+}
+
+
+/* ===========================================================
+ANIMATIONS
+=========================================================== */
 .matched {
   animation: jump 0.5s ease-in-out;
 }
 
 @keyframes jump {
-  0% { transform: translateY(0); }
-  25% { transform: translateY(-10px); }
-  50% { transform: translateY(0); }
-  75% { transform: translateY(-5px); }
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(-10px); }
+  50%  { transform: translateY(0); }
+  75%  { transform: translateY(-5px); }
   100% { transform: translateY(0); }
 }
 
 @keyframes overlay-grow {
   from {
-    background-color: rgba(151, 139, 111, 0); /* Start with brown-ish transparent */
+    background-color: rgba(151, 139, 111, 0);
     font-size: 0;
   }
   to {
-    background-color: rgba(151, 139, 111, 0.8); /* Fade into semi-transparent brown */
+    background-color: rgba(151, 139, 111, 0.8);
     font-size: 10em;
   }
 }
 
+
+/* ===========================================================
+RESPONSIVE DESIGN
+=========================================================== */
 @media (max-width: 600px) {
   .game-container {
-    grid-template-columns: repeat(2, auto)
+    grid-template-columns: repeat(2, auto);
   }
 
   .game-info-container {
